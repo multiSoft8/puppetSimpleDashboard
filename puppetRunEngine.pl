@@ -28,7 +28,7 @@ while($mysqlHash = $mysqlConn->GetHashrow())
 	$pupId = $mysqlHash->{id};
 	$sendStatusNullCount++;
 	$log->AddLogLine("Send puppet command to $mysqlHash->{ip}");
-	$command = "timeout  60 ssh -i \"/var/lib/.dagmar/.dagmar\" -o \"GlobalKnownHostsFile /dev/null\" -o StrictHostKeyChecking=no sysops\@$ipAddress \"echo 1 > /var/tmp/runPuppetClient\"";
+	$command = "timeout  60 ssh -i \"/\path" -o \"GlobalKnownHostsFile /dev/null\" -o StrictHostKeyChecking=no sysops\@$ipAddress \"echo 1 > /var/tmp/runPuppetClient\"";
 	$retCode  = system("$command");
 	$log->AddLogLine("C=$command");
 	$log->AddLogLine("RetCode=$retCode");
@@ -58,7 +58,7 @@ while($mysqlHash = $mysqlConn->GetHashrow())
 	$pupId = $mysqlHash->{id};
 	$passedTime = $mysqlHash->{passed_time}; 	##in seconds
 	$passedTime = $passedTime / 60; 		##in minutes
-	$command = "timeout  60 ssh -i \"/var/lib/.dagmar/.dagmar\" -o \"GlobalKnownHostsFile /dev/null\" -o StrictHostKeyChecking=no sysops\@$ipAddress \"cat /var/tmp/runPuppetClient\"";
+	$command = "timeout  60 ssh -i \"/path\" -o \"GlobalKnownHostsFile /dev/null\" -o StrictHostKeyChecking=no sysops\@$ipAddress \"cat /var/tmp/runPuppetClient\"";
 	$log->AddLogLine("C=$command");
 	$retValue = `$command`;
 	$retValue =~ s/\n//g;
